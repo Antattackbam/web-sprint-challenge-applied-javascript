@@ -43,7 +43,7 @@ const cardContainer = document.querySelector('.cards-container')
 console.log(cardcont)
 
 
-function articleMaker (dataobject) {
+function articleMaker (data) {
  const cards = document.createElement('div')
  const headline = document.createElement('div')
  const author = document.createElement('div')
@@ -62,9 +62,9 @@ function articleMaker (dataobject) {
  imgcont.appendChild(img)
  author.appendChild(authorname)
 
- headline.textContent = dataobject.headline
- img.src = dataobject.authorPhoto
- authorname.textContent = dataobject.authorName
+ headline.textContent = data.headline
+ img.src = data.authorPhoto
+ authorname.textContent = data.authorName
 
  cards.addEventListener ("click", (event) => {
     console.log(headline)

@@ -10,51 +10,29 @@
 //
 // NOTE: you do _not_ need to install axios as it's included in the HTML via script element
 
+const topics = document.querySelector('.topics');
+
 axios.get('https://lambda-times-api.herokuapp.com/topics')
-  .then(function (response) {
-    const info = response.data
-   return tabMaker(response.data)
-   
-   
+  .then((res) =>  {
+    console.log(res.data.topics);
+    const info = res.data.topics;
+    info.forEach(item =>{
+      topics.appendChild(tabMaker(item));
+    });
   })
-  .catch(function (error) {
-    console.log(error);
+  .catch(function (err) {
+    console.log(err);
   })
   .then(function () {
   });
 
   
 
-  function tabMaker(objectData){
+  function tabMaker(data){
    
-    const final = document.querySelector(".topics")
-    const topicone = document.createElement('div')
-    const topictwo = document.createElement('div')
-    const topicthree = document.createElement('div')
-    const topicfour = document.createElement('div')
-    const topicfive = document.createElement('div')
-    
-    topicone.className = "tab"
-    topictwo.className = "tab"
-    topicthree.className = "tab"
-    topicfour.className = "tab"
-    topicfive.className = "tab"
+    const topicDiv= document.createElement('div');
+          topicDiv.className = 'tab';
+          topicDiv.textContent = data;
 
-    topicone.textContent = "javascript"
-    topictwo.textContent = "bootstrap"
-    topicthree.textContent = "technology"
-    topicfour.textContent = "jquery"
-    topicfive.textContent = "node.js"
-    
-    
-    final.appendChild(topicone)
-    final.appendChild(topictwo)
-    final.appendChild(topicthree)
-    final.appendChild(topicfour)
-    final.appendChild(topicfive)
-    
-
-    // return emptyarr.values
-
-    return final;
+    return topicDiv;
   }
