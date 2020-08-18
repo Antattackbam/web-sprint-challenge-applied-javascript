@@ -66,8 +66,8 @@ function articleMaker (data) {
  img.src = data.authorPhoto
  authorname.textContent = data.authorName
 
- cards.addEventListener ("click", (event) => {
-    console.log(headline)
+ cards.addEventListener ("click", () => {
+    console.log(headline.textContent);
   })
 
 
